@@ -55,14 +55,14 @@ The repository contains two native macOS implementations: a SwiftUI interface an
 ```bash
 git clone https://github.com/Tracybobo7/macos-format-factory.git
 cd macos-format-factory
-./scripts/build_app.sh
+bash scripts/build_app.sh
 ```
 
 The script creates `格式工厂.app` at the repository root. You can select an implementation explicitly:
 
 ```bash
-FORMAT_FACTORY_BUILD_VARIANT=swift ./scripts/build_app.sh
-FORMAT_FACTORY_BUILD_VARIANT=appkit ./scripts/build_app.sh
+FORMAT_FACTORY_BUILD_VARIANT=swift bash scripts/build_app.sh
+FORMAT_FACTORY_BUILD_VARIANT=appkit bash scripts/build_app.sh
 ```
 
 The script ad-hoc signs the app for local use. This is not Apple Developer ID signing or notarization. When opening a downloaded build for the first time, macOS may require **Open** from Finder's context menu. Build on the target Mac to produce its native Apple Silicon or Intel architecture.
@@ -70,13 +70,13 @@ The script ad-hoc signs the app for local use. This is not Apple Developer ID si
 ### Run tests
 
 ```bash
-./scripts/test_core.sh
+bash scripts/test_core.sh
 ```
 
 Optionally provide a real iPhone HEIC to exercise the system HEIC decoder and EXIF orientation path:
 
 ```bash
-./scripts/test_core.sh "/path/to/photo.HEIC"
+bash scripts/test_core.sh "/path/to/photo.HEIC"
 ```
 
 Integration tests cover image conversion, cropped dimensions, multi-page PDFs and DPI, rotated landscape pages, output-directory behavior, and name collisions. They create temporary samples and clean them up. On a Mac with full Xcode, run the Swift XCTest suite with:

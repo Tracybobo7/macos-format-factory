@@ -55,14 +55,14 @@
 ```bash
 git clone https://github.com/Tracybobo7/macos-format-factory.git
 cd macos-format-factory
-./scripts/build_app.sh
+bash scripts/build_app.sh
 ```
 
 成功后在项目根目录生成 `格式工厂.app`。指定实现：
 
 ```bash
-FORMAT_FACTORY_BUILD_VARIANT=swift ./scripts/build_app.sh
-FORMAT_FACTORY_BUILD_VARIANT=appkit ./scripts/build_app.sh
+FORMAT_FACTORY_BUILD_VARIANT=swift bash scripts/build_app.sh
+FORMAT_FACTORY_BUILD_VARIANT=appkit bash scripts/build_app.sh
 ```
 
 脚本会对 App 做本机 ad-hoc 签名。这适合本地构建与使用，不等于 Apple Developer ID 签名或公证。首次从外部下载 App 时，macOS 可能要求在 Finder 中右键选择“打开”。Apple Silicon 与 Intel Mac 可分别在目标机器上构建对应架构。
@@ -70,13 +70,13 @@ FORMAT_FACTORY_BUILD_VARIANT=appkit ./scripts/build_app.sh
 ### 测试
 
 ```bash
-./scripts/test_core.sh
+bash scripts/test_core.sh
 ```
 
 可选传入一张真实 iPhone HEIC，额外验证系统 HEIC 解码和 EXIF 方向：
 
 ```bash
-./scripts/test_core.sh "/path/to/photo.HEIC"
+bash scripts/test_core.sh "/path/to/photo.HEIC"
 ```
 
 测试覆盖格式转换、裁切后像素尺寸、PDF 多页与 DPI、横版旋转页面、输出目录行为及重名保护。测试在系统临时目录中生成样本并清理。SwiftUI 实现的 XCTest 可在完整 Xcode 环境中运行：
